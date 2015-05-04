@@ -1,0 +1,113 @@
+body {
+    background: #4E535B;
+    padding-top: 3.5em;
+}
+
+.db-ribbon {
+    background: rgba(200,200,200,.5);
+    width: 3.6em;
+    height: 5em;
+    margin: 0 auto;
+    position: relative;
+    top: 19px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-top: 2px solid rgba(255,255,255,.5);
+    border-bottom: 0;  
+    border-radius: 5px 5px 0 0;
+    box-shadow: 0 0 3px rgba(0,0,0,.7); 
+}
+
+.db-ribbon:before {
+    content: '';
+    display: block;
+    width: 45%; /* 15px; 30%;*/
+    height: 32%; /* 15px; 22%;*/
+    background: #4E535B;
+    border: 4px solid #cfd0d1;
+    margin: 18px auto;
+    box-shadow: inset 0 0 5px #000, 0 0 2px #000, 0 1px 1px 1px #A7A8AB;
+    border-radius: 100%;
+}
+
+.db-login {
+    background: #F1F2F4;
+    border-bottom: 2px solid #C5C5C8;
+    border-radius: 5px;
+    text-align: center;
+    color: #36383C;
+    text-shadow: 0 1px 0 #FFF;
+    max-width: 28em;
+    margin: 0 auto;
+    padding: 15px 40px 20px 40px;
+    box-shadow: 0 0 3px #000;
+}
+
+.db-login:before {
+    content:"";
+    display: block;
+    width: 5.4em;
+    height: 8px;
+    background: #4E535B;
+    border-radius: 5px;
+    border-bottom: 1px solid #FFFFFF;
+    border-top: 2px solid #CBCBCD;
+    margin: 0 auto;
+}
+
+.db-brand-logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    border: 4px solid 
+    margin-top: 10px;
+    border: 4px solid #FFF;
+    margin: 18px auto 0;
+    box-shadow: 0 1px 1px 1px #A7A8AB;
+    background-image: url('http://images.clipartlogo.com/files/images/45/456213/cymbals-clip-art_f.jpg');
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.db-btn {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    background: rgba(114,212,202,1);
+    border-radius: 5px;
+    border:0;
+    border-top: 1px solid #B2ECE6;
+    box-shadow: 0 0 0 1px #46A294, 0 2px 2px #808389;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    text-shadow: 0 1px 2px #21756A;
+}
+
+.db-btn:hover {
+    background: linear-gradient(to bottom, rgba(107,198,186,1) 0%,rgba(57,175,154,1) 100%);  
+}
+
+.db-btn:active {
+    box-shadow: inset 0 0 5px #000;
+    background: linear-gradient(to bottom, rgba(57,175,154,1) 0%,rgba(107,198,186,1) 100%); 
+}
+
+/* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+.db-header {
+    height: 400px;
+    background: url('http://placehold.it/1920x400') center center no-repeat scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+/* Customize the text color and shadow color and to optimize text legibility. */
+.db-tagline {
+    text-shadow: 0 0 10px #000;
+    color: #fff;
+}
+
+.db-item {
+    margin-bottom: 25px;
+}
