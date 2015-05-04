@@ -4,7 +4,7 @@
   "description": "Capston Project",
   "main": "gulp.config.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp --nosync"
   },
   "repository": {
     "type": "git",
