@@ -121,3 +121,18 @@ body {
 	width: 50%;
     display: inline-block;
 }
+
+.db-row {
+    white-space: nowrap;
+    margin-right: 15px;
+}
+
+.db-col {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.db-del-margin {
+    margin: 0 auto;
+}
