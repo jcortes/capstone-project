@@ -111,3 +111,13 @@ body {
 .db-item {
     margin-bottom: 25px;
 }
+
+.db-footer {
+    padding: 25px 0px;
+    text-align: center;
+}
+
+.progress-track {
+	width: 50%;
+    display: inline-block;
+}

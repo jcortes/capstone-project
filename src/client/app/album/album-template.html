@@ -17,28 +17,74 @@
 <br>
 <section class="container">
     <!-- Call to Action Section -->
-    <div class="well">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Tracks</h2>
-            </div>
-            <div class="col-md-4">
-                <button class="db-btn">+ Add Track</button>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Tracks</h2>
+                </div>
+                <div class="col-md-4">
+                    <button class="db-btn">+ Add Track</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <section class="container">
-    <div class="row">
-<!--        TODO-->
+    <div class="well">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Track # 1</h3>
+            </div>
+            <div class="col-md-6">
+                <audio-track 
+                    mp3="/Miaow-07-Bubble.mp3"
+                    ogg="/Miaow-07-Bubble.ogg">
+                    <div progress-slider></div>
+                </audio-track>
+            </div>
+            <div class="col-md-2">
+                <button class="db-btn">Change</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="well">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Track # 2</h3>
+            </div>
+            <div class="col-md-6">
+                <audio-track 
+                    mp3="/Miaow-07-Bubble.mp3"
+                    ogg="/Miaow-07-Bubble.ogg">
+                    <div progress-slider></div>
+                </audio-track>
+            </div>
+            <div class="col-md-2">
+                <button class="db-btn">Change</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="well">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>Track # 3</h3>
+            </div>
+            <div class="col-md-6">
+                <audio-track
+                    mp3="/Miaow-07-Bubble.mp3"
+                    ogg="/Miaow-07-Bubble.ogg">
+                    <div progress-slider></div>
+                </audio-track>
+            </div>
+            <div class="col-md-2">
+                <button class="db-btn">Change</button>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <p>Copyright &copy; Distro Band 2015</p>
-        </div>
-    </div>
-</footer>
+<generic-footer></generic-footer>
