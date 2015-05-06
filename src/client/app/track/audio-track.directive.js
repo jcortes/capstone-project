@@ -20,8 +20,6 @@
         return ddo;
 
         function link(scope, element, attrs) {
-            
-            var audioPlayer = element.find('audio')[0];
             scope.sources = [];
             
             function processSources() {
@@ -43,32 +41,6 @@
                 }
             }
             processSources();
-            
-            var btnPause = element.find('.button-pause');
-            var btnPlay = element.find('.button-play');
-            var btnStop = element.find('.button-stop');
-            
-            scope.audio = {
-                play: function() {
-                    btnPlay.blur();
-                    btnPlay.addClass('active');
-                    btnPause.removeClass('active');
-                    audioPlayer.play();
-                },
-                pause: function() {
-                    btnPause.blur();
-                    btnPause.addClass('active');
-                    btnPlay.removeClass('active');
-                    audioPlayer.pause();
-                },
-                stop: function() {
-                    btnStop.blur();
-                    btnPlay.removeClass('active');
-                    btnPause.removeClass('active');
-                    audioPlayer.pause();
-                    audioPlayer.currentTime = 0;
-                }
-            };
         }
     }
 
@@ -77,5 +49,31 @@
     function AudioTrackController($scope, $element) {
         var vm = this;
         vm.audioPlayer = $element.find('audio')[0];
+        
+        var btnPause = $element.find('.button-pause');
+        var btnPlay = $element.find('.button-play');
+        var btnStop = $element.find('.button-stop');
+
+        vm.audio = {
+            play: function() {
+                btnPlay.blur();
+                btnPlay.addClass('active');
+                btnPause.removeClass('active');
+                vm.audioPlayer.play();
+            },
+            pause: function() {
+                btnPause.blur();
+                btnPause.addClass('active');
+                btnPlay.removeClass('active');
+                vm.audioPlayer.pause();
+            },
+            stop: function() {
+                btnStop.blur();
+                btnPlay.removeClass('active');
+                btnPause.removeClass('active');
+                vm.audioPlayer.pause();
+                vm.audioPlayer.currentTime = 0;
+            }
+        };
     }
 })();

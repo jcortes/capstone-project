@@ -35,6 +35,11 @@
                 progressSlider.slider('option', 'value', 
                     parseInt((atc.audioPlayer.currentTime * 100) / atc.audioPlayer.duration));
             });
+            
+            atc.audioPlayer.addEventListener('ended', function() {
+                progressSlider.slider('option', 'value', 0);
+                atc.audio.stop();
+            });
         }
     }
 
