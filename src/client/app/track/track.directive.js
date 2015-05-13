@@ -11,8 +11,8 @@
             link: link,
             templateUrl: 'app/track/track-template.html',
             scope: true,
-            controller: TrackController,
-            controllerAs: 'vm',
+            controller: 'TrackController',
+            controllerAs: 'tc',
             bindToController: true,
             transclude: false
         };
@@ -20,11 +20,6 @@
 
         function link(scope, element, attrs){
             
-        }
-        
-        /* @ngInject */
-        function TrackController() {
-            var vm = this;
         }
     }
 
