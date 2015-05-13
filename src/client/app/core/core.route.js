@@ -9,10 +9,10 @@
     function coreConfig($locationProvider, $routeProvider){
         $locationProvider.hashPrefix('!');
         $routeProvider
-        .when('/login', {
-            templateUrl : 'callback.html',
-            controller: CallbackController,
-        })
+//        .when('/login', {
+//            templateUrl : 'callback.html',
+//            controller: CallbackController,
+//        })
         .otherwise({
             redirectTo : '/'
         });
