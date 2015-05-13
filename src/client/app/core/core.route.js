@@ -9,25 +9,23 @@
     function coreConfig($locationProvider, $routeProvider){
         $locationProvider.hashPrefix('!');
         $routeProvider
-//        .when('/login', {
-//            templateUrl : 'callback.html',
-//            controller: CallbackController,
-//        })
+        .when('/callback', {
+            templateUrl : 'callback.html',
+            controller: CallbackController,
+        })
         .otherwise({
             redirectTo : '/'
         });
     }
 
-    CallbackController.$inject = ['$scope'];
+    CallbackController.$inject = ['$scope', '$location'];
     /* @ngInject */
-    function CallbackController($scope) {
+    function CallbackController($scope, $location) {
         var vm = $scope;
         
         // initiate auth popup
         SC.connect(function() {
-//            SC.get('/me', function(me) {
-//                alert('Hello, ' + me.username);
-//            });
+            $location.path('/distro');
         });
     }
     
