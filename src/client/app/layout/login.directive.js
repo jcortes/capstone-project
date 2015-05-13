@@ -28,21 +28,16 @@
             var vm = this;
             
             vm.validateLogin = function() {
-                var doLogin = false;
                 // initiate auth popup
                 SC.connect(function() {
-                    doLogin = true;
                     SC.get('/me', function(me) { 
                         console.log(me);
                     });
                     
-//                    $scope.$apply(function(){
-//                        $location.path('/distro');
-//                    })
+                    $scope.$apply(function(){
+                        $location.path('/distro');
+                    })
                 });
-                
-                if(doLogin)
-                    $location.path('/distro');
             }
         }
     }
