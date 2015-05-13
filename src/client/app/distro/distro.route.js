@@ -10,14 +10,8 @@
         $routeProvider
         .when('/distro', {
             templateUrl : 'app/distro/distro.html',
-            controller: DistroController
+            controller: 'DistroController'
         });
     }
     
-    DistroController.$inject = ['$scope'];
-    /* @ngInject */
-    function DistroController($scope){
-        var vm = $scope;
-    }
-
 })();

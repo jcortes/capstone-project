@@ -27,7 +27,7 @@
         function LoginController($scope, $location, userSession) {
             var vm = this;
             
-            if(userSession.loggedIn) {
+            if (userSession.loggedIn) {
                 $location.path('/distro');
             }
             

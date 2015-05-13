@@ -11,20 +11,14 @@
             link: link,
             templateUrl: 'app/distro/distro-template.html',
             scope: true,
-            controller: DistroController,
+            controller: 'DistroController',
             controllerAs: 'vm',
             bindToController: true,
             transclude: false
         };
         return ddo;
 
-        function link(scope, element, attrs){
-            
-        }
-        
-        /* @ngInject */
-        function DistroController() {
-            var vm = this;
+        function link(scope, element, attrs) {
         }
     }
 
