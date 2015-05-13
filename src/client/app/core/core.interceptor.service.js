@@ -15,7 +15,7 @@
         function request(req) {
             if(!userSession.loggedIn) {
                 var previousPage = $location.path();
-                $location.path('/').search({
+                $location.path('/login').search({
                     previous: previousPage
                 });
             }

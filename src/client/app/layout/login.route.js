@@ -8,7 +8,7 @@
     /* @ngInject */
     function loginConfig($routeProvider){
         $routeProvider
-        .when('/', {
+        .when('/login', {
             templateUrl : 'app/layout/login.html'
         });
     }

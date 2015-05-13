@@ -18,7 +18,7 @@
         };
         return ddo;
 
-        function link(scope, element, attrs){
+        function link(scope, element, attrs) {
             
         }
         
@@ -38,7 +38,6 @@
                     
                     $scope.$apply(function(){
                         userSession.loggedIn = true;
-//                        $location.path('/distro');
                         $location.path(vm.previousPage || '/distro');
                     })
                 });

@@ -11,7 +11,7 @@
         $locationProvider.hashPrefix('!');
         
         // add interceptor
-		$httpProvider.interceptors.push('authInterceptor');
+//		$httpProvider.interceptors.push('authInterceptor');
         
         $routeProvider
         .when('/logout', {
@@ -19,7 +19,7 @@
             controller : LogoutController
         })
         .otherwise({
-            redirectTo : '/'
+            redirectTo : '/login'
         });
     }
 
@@ -29,7 +29,7 @@
         var vm = $scope;
         
 		vm.loggedIn = userSession.loggedIn; 
-		$scope.$watch(function(){return userSession.loggedIn}, function(newVal, oldVal){
+		$scope.$watch(function() { return userSession.loggedIn }, function(newVal, oldVal){
 			vm.loggedIn = newVal;
 		})
     }
@@ -38,7 +38,7 @@
     /* @ngInject */
     function LogoutController($location, userSession) {
 		userSession.loggedIn = false;
-		$location.path('/'); // login
+		$location.path('/login');
 	}
     
 })();
