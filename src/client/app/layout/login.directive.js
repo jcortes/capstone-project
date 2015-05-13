@@ -29,14 +29,14 @@
             
             vm.validateLogin = function() {
                 // initiate auth popup
-                SC.connect(function() {
-                    console.log('validation');
-                    
-                    $location.path('/distro');
-                    
+                SC.connect(function() {                    
                     SC.get('/me', function(me) { 
-                        alert('Hello, ' + me.username); 
+                        console.log(me);
                     });
+                    
+                    $scope.$apply(function(){
+                        $location.path('/distro');
+                    })
                 });
             }
         }
