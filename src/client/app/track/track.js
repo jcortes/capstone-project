@@ -3,10 +3,15 @@
     angular.module('app.track')
     .controller('TrackController', TrackController);
 
-    TrackController.$inject = ['$scope','dbTracksRequest']
+    TrackController.$inject = ['$scope', '$location', 'userSession', 'dbTracksRequest']
     /* @ngInject */
-    function TrackController($scope, dbTracksRequest){
+    function TrackController($scope, $location, userSession, dbTracksRequest){
         var vm = this;
+        
+        if (!userSession.loggedIn) {
+            $location.path('/login');
+        }
+        
         vm.getTracks = getTracks;
 
         function getTracks() {

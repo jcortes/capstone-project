@@ -11,7 +11,7 @@
             link: link,
             templateUrl: 'app/band/band-template.html',
             scope: true,
-            controller: BandController,
+            controller: 'BandController',
             controllerAs: 'vm',
             bindToController: true,
             transclude: false
@@ -20,11 +20,6 @@
 
         function link(scope, element, attrs){
             
-        }
-        
-        /* ngInject */
-        function BandController() {
-            var vm = this;
         }
     }
 

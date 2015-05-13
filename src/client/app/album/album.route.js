@@ -9,7 +9,8 @@
     function bandConfig($routeProvider){
         $routeProvider
         .when('/albums', {
-            templateUrl : 'app/album/album.html'
+            templateUrl : 'app/album/album.html',
+            controller: 'AlbumController'
         });
     }
 

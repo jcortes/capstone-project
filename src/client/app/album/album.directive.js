@@ -11,7 +11,7 @@
             link: link,
             templateUrl: 'app/album/album-template.html',
             scope: true,
-            controller: AlbumController,
+            controller: 'AlbumController',
             controllerAs: 'vm',
             bindToController: true,
             transclude: false
@@ -20,11 +20,6 @@
 
         function link(scope, element, attrs){
             
-        }
-        
-        /* ngInject */
-        function AlbumController() {
-            var vm = this;
         }
     }
 

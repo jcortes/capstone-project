@@ -9,7 +9,8 @@
     function trackConfig($routeProvider){
         $routeProvider
         .when('/tracks', {
-            templateUrl : 'app/track/track.html'
+            templateUrl : 'app/track/track.html',
+            controller: 'TrackController'
         });
     }
 

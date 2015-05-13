@@ -9,7 +9,8 @@
     function bandConfig($routeProvider){
         $routeProvider
         .when('/bands', {
-            templateUrl : 'app/band/band.html'
+            templateUrl : 'app/band/band.html',
+            controller: 'BandController'
         });
     }
 
