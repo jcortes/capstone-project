@@ -19,7 +19,11 @@
     function DistroController($scope){
         var vm = $scope;
         
-        window.opener.setTimeout(window.opener.SC.connectCallback, 1);
+         // Open a new window
+        var myWindow = window.open("", "Login", "width=200, height=100");
+
+//        window.opener.setTimeout(window.opener.SC.connectCallback, 1);
+        myWindow.opener.setTimeout(myWindow.opener.SC.connectCallback, 1);
     }
 
 })();
