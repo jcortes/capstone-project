@@ -22,10 +22,12 @@
             
         }
         
-        LoginController.$inject = ['$scope', '$location'];
+        LoginController.$inject = ['$scope', '$location', 'userSession'];
         /* @ngInject */
-        function LoginController($scope, $location) {
+        function LoginController($scope, $location, userSession) {
             var vm = this;
+            
+            vm.previousPage = $location.search().previous;
             
             vm.validateLogin = function() {
                 // initiate auth popup
@@ -35,7 +37,9 @@
                     });
                     
                     $scope.$apply(function(){
-                        $location.path('/distro');
+                        userSession.loggedIn = true;
+//                        $location.path('/distro');
+                        $location.path(vm.previousPage || '/distro');
                     })
                 });
             }

@@ -22,7 +22,7 @@
     <!-- endbuild -->
 </head>
 
-<body ng-app="app">
+<body ng-app="app" ng-controller="MainController">
     
     <div ng-view></div>
     <!--#4E535B nav background-->
@@ -50,6 +50,8 @@
     <script src="/src/client/app/core/constants.js"></script>
     <script src="/src/client/app/core/config.js"></script>
     <script src="/src/client/app/core/core.route.js"></script>
+    <script src="/src/client/app/core/core.session.service.js"></script>
+    <script src="/src/client/app/core/core.interceptor.service.js"></script>
     <script src="/src/client/app/core/core.track.service.js"></script>
     <script src="/src/client/app/layout/top-nav.directive.js"></script>
     <script src="/src/client/app/layout/generic-footer.directive.js"></script>
