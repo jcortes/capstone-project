@@ -14,10 +14,15 @@
         });
     }
     
-    DistroController.$inject = ['$scope'];
+    DistroController.$inject = ['$scope', '$location'];
     /* @ngInject */
-    function DistroController($scope){
+    function DistroController($scope, $location){
         var vm = $scope;
+        
+        // initiate auth popup
+        SC.connect(function() {
+//            $location.path('/distro');
+        });
     }
 
 })();

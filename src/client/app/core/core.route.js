@@ -8,25 +8,15 @@
     /* @ngInject */
     function coreConfig($locationProvider, $routeProvider){
         $locationProvider.hashPrefix('!');
-        $routeProvider
-        .when('/callback', {
-            templateUrl : 'callback.html',
-            controller: CallbackController,
-        })
-        .otherwise({
+        $routeProvider.otherwise({
             redirectTo : '/'
         });
     }
 
-    CallbackController.$inject = ['$scope', '$location'];
+    CallbackController.$inject = ['$scope'];
     /* @ngInject */
-    function CallbackController($scope, $location) {
+    function CallbackController($scope) {
         var vm = $scope;
-        
-        // initiate auth popup
-        SC.connect(function() {
-            $location.path('/distro');
-        });
     }
     
 })();
