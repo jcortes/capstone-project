@@ -27,6 +27,10 @@
         function LoginController($scope, $location, userSession) {
             var vm = this;
             
+            if(userSession.loggedIn) {
+                $location.path('/distro');
+            }
+            
             vm.previousPage = $location.search().previous;
             
             vm.validateLogin = function() {
