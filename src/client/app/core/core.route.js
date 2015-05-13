@@ -17,7 +17,7 @@
         .when('/logout', {
             template : '',
             controller : LogoutController
-        });
+        })
         .otherwise({
             redirectTo : '/'
         });
