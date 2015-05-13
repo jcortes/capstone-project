@@ -22,9 +22,17 @@
             
         }
         
+        LoginController.$inject = ['$scope', '$location'];
         /* @ngInject */
-        function LoginController() {
+        function LoginController($scope, $location) {
             var vm = this;
+            
+            vm.validateLogin = function() {
+                // initiate auth popup
+                SC.connect(function() {
+                    $location.path('/distro');
+                });
+            }
         }
     }
     
