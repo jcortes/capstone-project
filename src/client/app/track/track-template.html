@@ -10,12 +10,12 @@
                     <h2 class="db-del-margin">Search for a track</h2>
                 </div>
                 <div class="col-md-9 db-col">
-                    <div class="input-group">
-                        <input type="text" class="form-control"/>
+                    <form class="input-group" ng-submit="tc.getTracks()">
+                        <input type="text" class="form-control" ng-model="tc.trackName"/>
                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="button" ng-click="tc.getTracks()">Go!</button>
+                            <button class="btn btn-default" type="submit">Go!</button>
                         </span>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -28,10 +28,10 @@
         <div class="panel-body">
             <div class="row db-row">
                 <div class="col-md-2 db-col">
-                    <h2 class="db-del-margin">Name</h2>
+                    <h2 class="db-del-margin">Selected</h2>
                 </div>
                 <div class="col-md-6 db-col">
-                    <input type="text" class="form-control"/>
+                    <input type="text" class="form-control" ng-model="tc.trackTitle"/>
                 </div>
                 <div class="col-md-2 db-col">
                     <button class="db-btn db-del-margin">Save</button>
@@ -44,39 +44,16 @@
     </div>
 </section>
 
-<section class="container">
-    <div class="well">
+<section class="container" ng-if="tc.tracks">
+    <div class="well" ng-repeat="track in tc.tracks" ng-click="tc.selectTrack(track)">
         <div class="row">
             <div class="col-md-12">
-                <h3><a href="">Track Name Found</a></h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="well">
-        <div class="row">
-            <div class="col-md-12">
-                <h3><a href="">Track Name Found</a></h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="well">
-        <div class="row">
-            <div class="col-md-12">
-                <h3><a href="">Track Name Found</a></h3>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="well">
-        <div class="row">
-            <div class="col-md-12">
-                <h3><a href="">Track Name Found</a></h3>
-                <p>Lorem ipsum dolor sit amet.</p>
+                <h3><a href="">{{ track.title }}</a></h3>
+                <img ng-src="{{ track.artwork_url }}">
+                <audio-track ng-if="track.streamable"
+                    mp3="{{ track.stream_url + tc.client_id }}">
+                    <div progress-slider></div>
+                </audio-track>
             </div>
         </div>
     </div>

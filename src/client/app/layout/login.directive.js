@@ -43,8 +43,11 @@
                     $scope.$apply(function(){
                         userSession.loggedIn = true;
                         $location.path(vm.previousPage || '/distro');
-                    })
+                    });
                 });
+                
+//                userSession.loggedIn = true;
+//                $location.path(vm.previousPage || '/distro');
             }
         }
     }

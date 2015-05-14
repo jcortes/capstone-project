@@ -93,6 +93,7 @@ body {
 }
 
 /* Header Image Background - Change the URL below to your image path (example: ../images/background.jpg) */
+/*
 .db-header {
     height: 400px;
     background: url('http://placehold.it/1920x400') center center no-repeat scroll;
@@ -101,6 +102,7 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
+*/
 
 /* Customize the text color and shadow color and to optimize text legibility. */
 .db-tagline {

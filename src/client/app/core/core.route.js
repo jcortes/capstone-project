@@ -10,6 +10,7 @@
     function coreConfig($locationProvider, $routeProvider, $httpProvider){
         $locationProvider.hashPrefix('!');
         
+        $httpProvider.defaults.useXDomain = true;
         // add interceptor
 //		$httpProvider.interceptors.push('authInterceptor');
         
@@ -23,6 +24,13 @@
         });
     }
 
+    LogoutController.$inject = ['$location', 'userSession'];
+    /* @ngInject */
+    function LogoutController($location, userSession) {
+		userSession.loggedIn = false;
+		$location.path('/login');
+	}
+    
     MainController.$inject = ['$scope', 'userSession'];
     /* @ngInject */
     function MainController($scope, userSession) {
@@ -33,12 +41,5 @@
 			vm.loggedIn = newVal;
 		})
     }
-    
-    LogoutController.$inject = ['$location', 'userSession'];
-    /* @ngInject */
-    function LogoutController($location, userSession) {
-		userSession.loggedIn = false;
-		$location.path('/login');
-	}
     
 })();
