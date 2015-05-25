@@ -23,27 +23,29 @@
     validateUser.$inject = ['$http', 'logger', 'listUsers', 'createUser'];
     /* @ngInject */
     function validateUser($http, logger, listUsers, createUser) {
-        SC.get('/me', function(me) {
-            var user = null;
-            listUsers.then(function(data) {
-                user = data.filter(function(u){ return u.id === me.id; })[0];
-                if(!user){
-                    user = {
-                        id: me.id,
-                        username: me.username,
-                        uri: me.uri,
-                        first_name: me.first_name,
-                        last_name: me.last_name,
-                        full_name: me.full_name,
-                        avatar_url: me.avatar_url
-                    };
-                    createUser(user).then(function(data){
-                        console.log('User created in database');
-                    });
-                } else {
-                    console.log('User exists in database');
-                }
+        return function(){
+            SC.get('/me', function(me) {
+                var user = null;
+                listUsers.then(function(data) {
+                    user = data.filter(function(u){ return u.id === me.id; })[0];
+                    if(!user){
+                        user = {
+                            id: me.id,
+                            username: me.username,
+                            uri: me.uri,
+                            first_name: me.first_name,
+                            last_name: me.last_name,
+                            full_name: me.full_name,
+                            avatar_url: me.avatar_url
+                        };
+                        createUser(user).then(function(data){
+                            console.log('User created in database');
+                        });
+                    } else {
+                        console.log('User exists in database');
+                    }
+                });
             });
-        });
+        };
     }
 })();
