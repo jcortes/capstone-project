@@ -32,7 +32,7 @@ exports.show = function(req, res) {
 
 // Get a single user by SoundCloud id
 exports.showById = function(req, res) {
-  User.findOne({ id: req.params.id }, function (err, user) {
+  User.findOne({ id: parseInt(req.params.id) }, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
     return res.json(user);
