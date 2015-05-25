@@ -14,12 +14,21 @@
         return $http.get('/api/users');
     }
     
-    userById.$inject = ['$http'];
+    userById.$inject = ['$http', '$q'];
     /* @ngInject */
-    function userById($http) {
+    function userById($http, $q) {
         return function(id) {
-            console.log(id);
-            return $http.get('/api/users/' + id);
+            var deferred = $q.defer();
+            $http.get('/api/users/' + id)
+            .success(function(response){
+                defer.resolve(response.data);
+            })
+            .error(function(data, status){
+                console.log('Error status: ' + status);
+                console.log('Error data: ' + data);
+                defer.reject(data);
+            });
+            return defer.promise();
         };
     }
     
