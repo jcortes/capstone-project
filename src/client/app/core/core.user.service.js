@@ -25,11 +25,10 @@
     function validateUser($http, listUsers, createUser) {
         return function(){
             SC.get('/me', function(me) {
-                var user = null;
                 listUsers.then(function(response) {
-                    user = response.data.filter(function(u){ return u.id === me.id; })[0];
+                    var user = response.data.filter(function(u){ return u.id === me.id; })[0];
                     console.log(user);
-                    if(!user){
+                    if(user === 'undefined'){
                         user = {
                             id: me.id,
                             username: me.username,
