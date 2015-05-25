@@ -36,7 +36,7 @@
             vm.validateLogin = function() {
                 // initiate auth popup
                 SC.connect(function() {
-                    validateUser();
+                    //validateUser();
                     
 //                    SC.get('/me', function(me) {
 //                        $http.get('/api/users').success(function(response) {
