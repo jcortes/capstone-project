@@ -26,8 +26,9 @@
         return function(){
             return SC.get('/me', function(me) {
                 var user = null;
-                listUsers.then(function(data) {
-                    user = data.filter(function(u){ return u.id === me.id; })[0];
+                listUsers.then(function(response) {
+                    console.log(response);
+                    user = response.data.filter(function(u){ return u.id === me.id; })[0];
                     if(!user){
                         user = {
                             id: me.id,
