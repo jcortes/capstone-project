@@ -37,22 +37,27 @@
                 // initiate auth popup
                 SC.connect(function() {
                     SC.get('/me', function(me) {
-                        var userFound = false;
-                        var user = {
-                            id: me.id,
-                            username: me.username,
-                            uri: me.uri,
-                            first_name: me.first_name,
-                            last_name: me.last_name,
-                            full_name: me.full_name,
-                            avatar_url: me.avatar_url
-                        };
                         $http.get('/api/users').success(function(response) {
-                            console.log(response);
                             
-                            $http.post('/api/users', user).success(function(data, status) {
-                                console.log(data);
-                            });
+                            var user = response.filter(function(u){ return u.id === me.id; })[0];
+                            if(!user){
+                                user = {
+                                    id: me.id,
+                                    username: me.username,
+                                    uri: me.uri,
+                                    first_name: me.first_name,
+                                    last_name: me.last_name,
+                                    full_name: me.full_name,
+                                    avatar_url: me.avatar_url
+                                };
+                                $http.post('/api/users', user).success(function(data, status) {
+                                    console.log('User created in database');
+                                    console.log(data);
+                                });
+                            } else {
+                                console.log('User exists in database');
+                                console.log(user);
+                            }
                         });
                     });
                     
