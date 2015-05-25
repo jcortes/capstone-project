@@ -18,7 +18,11 @@
     /* @ngInject */
     function userById($http) {
         return function(id) {
-            return $http.get('/api/users/' + id);
+            console.log(id);
+            return $http.get('/api/users/' + id)
+            .success(function(response){
+                console.log(response);
+            });
         };
     }
     
@@ -56,6 +60,7 @@
                         console.log('User exists in database');
                     }
                 });
+                console.log('after');
                 
 //                listUsers.then(function(response) {
 //                    var user = response.data.filter(function(u){ return u.id === me.id; })[0];
