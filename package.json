@@ -4,7 +4,8 @@
   "description": "Capston Project",
   "main": "gulp.config.js",
   "scripts": {
-    "start": "node src/server/app.js"
+    "start": "NODE_ENV=production node src/server/app.js",
+    "test": "node src/server/app.js"
   },
   "repository": {
     "type": "git",
