@@ -45,9 +45,9 @@
             SC.get('/me', function(me) {
                 
                 var user = null;
-                userById(me.id).then(function(respose) {
-                    console.log(respose.data);
-                    user = respose.data;
+                userById(me.id).then(function(response) {
+                    console.log(response);
+                    //user = response.data;
                     console.log('User exists in database');
                 }, userNotFound);
                 
