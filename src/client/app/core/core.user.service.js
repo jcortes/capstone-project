@@ -21,7 +21,7 @@
             var deferred = $q.defer();
             $http.get('/api/users/sc/' + id)
             .success(function(response){
-                deferred.resolve(response.data);
+                deferred.resolve(response);
             })
             .error(function(data, status){
                 deferred.reject(data);
