@@ -35,6 +35,7 @@ exports.create = function(req, res) {
   User.create(req.body, function(err, user) {
     if(err) { return handleError(res, err); }
 //    return res.json(201, user);
+      console.log(user);
       return res.status(201).json(user);
   });
 };

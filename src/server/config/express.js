@@ -37,6 +37,7 @@ module.exports = function(app) {
     app.use(express.static(config.root));
     app.set('appPath', 'src/client');
     app.use(morgan('dev'));
+    app.use(errorHandler()); // Error handler - has to be last
   }
 
   if ('development' === env || 'test' === env) {
