@@ -19,7 +19,7 @@
     function userById($http, $q) {
         return function(id) {
             var deferred = $q.defer();
-            $http.get('/api/users/' + id)
+            $http.get('/api/users/sc/' + id)
             .success(function(response){
                 deferred.resolve(response.data);
             })
