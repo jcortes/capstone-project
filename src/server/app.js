@@ -1,52 +1,32 @@
-/*jshint node:true*/
+/**
+ * Main application file
+ */
+
 'use strict';
 
+// Set default node environment to development
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// Set default mongo uri to production
+process.env.MONGOLAB_URI = 'mongodb://jcortes:Grindcore666@ds031812.mongolab.com:31812/heroku_app36541962';
+
 var express = require('express');
+var mongoose = require('mongoose');
+var config = require('./config/env');
+
+// Connect to database
+mongoose.connect(config.mongo.uri, config.mongo.options);
+console.log('Mongo URI Connection: ' + config.mongo.uri);
+
+// Setup server
 var app = express();
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-var port = process.env.PORT || 8001;
-var four0four = require('./utils/404')();
+var server = require('http').createServer(app);
+require('./config/express')(app);
+require('./routes')(app);
 
-var environment = process.env.NODE_ENV;
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(logger('dev'));
-
-app.use('/api', require('./routes'));
-
-console.log('About to crank up node');
-console.log('PORT=' + port);
-console.log('NODE_ENV=' + environment);
-
-switch (environment){
-    case 'build':
-        console.log('** BUILD **');
-        app.use(express.static('./build/'));
-        // Any invalid calls for templateUrls are under app/* and should return 404
-        app.use('/app/*', function(req, res, next) {
-            four0four.send404(req, res);
-        });
-        // Any deep link calls should return index.html
-        app.use('/*', express.static('./build/index.html'));
-        break;
-    default:
-        console.log('** DEV **');
-        app.use(express.static('./src/client/'));
-        app.use(express.static('./'));
-        // Any invalid calls for templateUrls are under app/* and should return 404
-        app.use('/app/*', function(req, res, next) {
-            four0four.send404(req, res);
-        });
-        // Any deep link calls should return index.html
-        app.use('/*', express.static('./src/client/index.html'));
-        break;
-}
-
-app.listen(port, function() {
-    console.log('Express server listening on port ' + port);
-    console.log('env = ' + app.get('env') +
-        '\n__dirname = ' + __dirname  +
-        '\nprocess.cwd = ' + process.cwd());
+// Start server
+server.listen(config.port, config.ip, function () {
+  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
+
+// Expose app
+exports = module.exports = app;

@@ -1,34 +1,23 @@
-var router = require('express').Router();
-var four0four = require('./utils/404')();
-var data = require('./data');
+/**
+ * Main application routes
+ */
 
-router.get('/distro', getDistro);
+'use strict';
 
-router.get('/people', getPeople);
-router.get('/person/:id', getPerson);
-router.get('/*', four0four.notFoundMiddleware);
+var errors = require('./util/errors');
 
-module.exports = router;
+module.exports = function(app) {
 
-//////////////
+  // Insert routes below
+  app.use('/api/users', require('./api/user'));
+  
+  // All undefined asset or api routes should return a 404
+  app.route('/:url(api|auth|components|app|bower_components|assets)/*')
+   .get(errors[404]);
 
-function getDistro(req, res, next) {
-    res.status(200).send('Hello Distro');
-}
-
-function getPeople(req, res, next) {
-    res.status(200).send(data.people);
-}
-
-function getPerson(req, res, next) {
-    var id = +req.params.id;
-    var person = data.people.filter(function(p) {
-        return p.id === id;
-    })[0];
-
-    if (person) {
-        res.status(200).send(person);
-    } else {
-        four0four.send404(req, res, 'person ' + id + ' not found');
-    }
-}
+  // All other routes should redirect to the index.html
+  app.route('/*')
+    .get(function(req, res) {
+      res.sendfile(app.get('appPath') + '/index.html');
+    });
+};

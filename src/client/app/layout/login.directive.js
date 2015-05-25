@@ -22,9 +22,9 @@
             
         }
         
-        LoginController.$inject = ['$scope', '$location', 'userSession'];
+        LoginController.$inject = ['$scope', '$location', '$http', 'userSession'];
         /* @ngInject */
-        function LoginController($scope, $location, userSession) {
+        function LoginController($scope, $location, $http, userSession) {
             var vm = this;
             
             if (userSession.loggedIn) {
@@ -36,8 +36,11 @@
             vm.validateLogin = function() {
                 // initiate auth popup
                 SC.connect(function() {
-                    SC.get('/me', function(me) { 
+                    SC.get('/me', function(me) {
                         console.log(me);
+                        $http.post('/api/users', me, function(response) {
+                            console.log(response);
+                        });
                     });
                     
                     $scope.$apply(function(){
