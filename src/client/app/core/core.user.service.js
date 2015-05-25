@@ -49,11 +49,12 @@
                     console.log(respose.data);
                     user = respose.data;
                     console.log('User exists in database');
-                    
-                }, function(reason) {
+                }, userNotFound);
+                
+                function userNotFound(reason) {
                     console.log(reason);
                     user = {
-                        id: me.id,
+                        sc_id: me.id,
                         username: me.username,
                         uri: me.uri,
                         first_name: me.first_name,
@@ -64,7 +65,7 @@
                     createUser(user).then(function(data){
                         console.log('User created in database');
                     });
-                });
+                }
                 
 //                listUsers.then(function(response) {
 //                    var user = response.data.filter(function(u){ return u.id === me.id; })[0];

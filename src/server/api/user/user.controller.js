@@ -32,7 +32,7 @@ exports.show = function(req, res) {
 
 // Get a single user by SoundCloud id
 exports.showById = function(req, res) {
-  User.findOne({ 'id': parseInt(req.params.id) }, function (err, user) {
+  User.findOne({ 'sc_id': req.params.id }, function (err, user) {
     if(err) { return handleError(res, err); }
     if(!user) { return res.send(404); }
     return res.json(user);
@@ -42,7 +42,6 @@ exports.showById = function(req, res) {
 // Creates a new user in the DB.
 exports.create = function(req, res) {
   User.create(req.body, function(err, user) {
-      console.log(req.body);
     if(err) { return handleError(res, err); }
 //    return res.json(201, user);
       console.log(user);
