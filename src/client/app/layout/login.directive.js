@@ -38,8 +38,8 @@
                 SC.connect(function() {
                     SC.get('/me', function(me) {
                         console.log(me);
-                        $http.post('/api/users', me, function(response) {
-                            console.log(response);
+                        $http.post('/api/users', me).success(function(data, status) {
+                            console.log(data);
                         });
                     });
                     
