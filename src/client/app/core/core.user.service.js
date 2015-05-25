@@ -24,7 +24,7 @@
     /* @ngInject */
     function validateUser($http, logger, listUsers, createUser) {
         return function(){
-            SC.get('/me', function(me) {
+            return SC.get('/me', function(me) {
                 var user = null;
                 listUsers.then(function(data) {
                     user = data.filter(function(u){ return u.id === me.id; })[0];
