@@ -43,8 +43,8 @@
                     user = respose.data;
                     console.log('User exists in database');
                     
-                }).error(function(status){
-                    console.log(status);
+                }, function(reason) {
+                    console.log(reason);
                     user = {
                         id: me.id,
                         username: me.username,
