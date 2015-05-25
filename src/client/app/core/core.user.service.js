@@ -3,13 +3,23 @@
 
     angular.module('app.core')
     .factory('listUsers', listUsers)
+    .factory('userById', userById)
     .factory('createUser', createUser)
     .factory('validateUser', validateUser);
 
+    
     listUsers.$inject = ['$http'];
     /* @ngInject */
     function listUsers($http) {
         return $http.get('/api/users');
+    }
+    
+    userById.$inject = ['$http'];
+    /* @ngInject */
+    function userById($http) {
+        return function(id) {
+            return $http.get('/api/users/' + id);
+        };
     }
     
     createUser.$inject = ['$http'];
@@ -20,14 +30,15 @@
         };
     }
     
-    validateUser.$inject = ['$http', 'listUsers', 'createUser'];
+    validateUser.$inject = ['$http', 'listUsers', 'createUser', 'userById'];
     /* @ngInject */
-    function validateUser($http, listUsers, createUser) {
+    function validateUser($http, listUsers, createUser, userById) {
         return function(){
             SC.get('/me', function(me) {
-                listUsers.then(function(response) {
-                    var user = response.data.filter(function(u){ return u.id === me.id; })[0];
-                    console.log(user);
+                
+                userById(me.id).then(function(respose) {
+                    console.log(respose.data);
+                    var user = respose.data;
                     if(user === 'undefined'){
                         user = {
                             id: me.id,
@@ -45,6 +56,11 @@
                         console.log('User exists in database');
                     }
                 });
+                
+//                listUsers.then(function(response) {
+//                    var user = response.data.filter(function(u){ return u.id === me.id; })[0];
+//                    console.log(user);
+//                });
             });
         };
     }
