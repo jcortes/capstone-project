@@ -37,7 +37,7 @@
                 // initiate auth popup
                 SC.connect(function() {
                     SC.get('/me', function(me) {
-                        console.log(me);
+                        var userFound = false;
                         var user = {
                             id: me.id,
                             username: me.username,
@@ -47,8 +47,12 @@
                             full_name: me.full_name,
                             avatar_url: me.avatar_url
                         };
-                        $http.post('/api/users', user).success(function(data, status) {
-                            console.log(data);
+                        $http.get('/api/users').success(function(response) {
+                            console.log(response);
+                            
+                            $http.post('/api/users', user).success(function(data, status) {
+                                console.log(data);
+                            });
                         });
                     });
                     
