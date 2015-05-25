@@ -21,14 +21,12 @@
             var deferred = $q.defer();
             $http.get('/api/users/' + id)
             .success(function(response){
-                defer.resolve(response.data);
+                deferred.resolve(response.data);
             })
             .error(function(data, status){
-                console.log('Error status: ' + status);
-                console.log('Error data: ' + data);
-                defer.reject(data);
+                deferred.reject(data);
             });
-            return defer.promise();
+            return deferred.promise;
         };
     }
     
