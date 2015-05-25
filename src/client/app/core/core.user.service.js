@@ -6,23 +6,23 @@
     .factory('createUser', createUser)
     .factory('validateUser', validateUser);
 
-    listUsers.$inject = ['$http', 'logger'];
+    listUsers.$inject = ['$http'];
     /* @ngInject */
-    function listUsers($http, logger) {
+    function listUsers($http) {
         return $http.get('/api/users');
     }
     
-    createUser.$inject = ['$http', 'logger'];
+    createUser.$inject = ['$http'];
     /* @ngInject */
-    function createUser($http, logger) {
+    function createUser($http) {
         return function(user) {
             return $http.post('/api/users', user);
         };
     }
     
-    validateUser.$inject = ['$http', 'logger', 'listUsers', 'createUser'];
+    validateUser.$inject = ['$http', 'listUsers', 'createUser'];
     /* @ngInject */
-    function validateUser($http, logger, listUsers, createUser) {
+    function validateUser($http, listUsers, createUser) {
         return function(){
             return SC.get('/me', function(me) {
                 var user = null;
