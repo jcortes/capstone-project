@@ -27,7 +27,6 @@
             return SC.get('/me', function(me) {
                 var user = null;
                 listUsers.then(function(response) {
-                    console.log(response);
                     user = response.data.filter(function(u){ return u.id === me.id; })[0];
                     if(!user){
                         user = {
